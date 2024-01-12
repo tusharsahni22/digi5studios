@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { FaHome ,FaRegUserCircle} from "react-icons/fa";
 import { MdOutlineExplore } from "react-icons/md";
 import { FaRegBookmark } from "react-icons/fa6";
+import { useNavigate } from 'react-router-dom';
 const Wrapper = styled.div`
 
 `;
@@ -44,15 +45,14 @@ const Profileicon = styled(FaRegUserCircle)`
 
 
 function Navbar() {
+  const navigate = useNavigate();
   return (
     <Wrapper>
       <VerticalNav>
-        <Homeicon/>
-        <Exploreicon/>
+        <Homeicon onClick={()=>{navigate("/")}} />
+        <Exploreicon onClick={()=>{navigate("explorer")}}/>
         <Bookmarkicon/>
         <Profileicon/>
-        
-        
       </VerticalNav>
     </Wrapper>
   )
