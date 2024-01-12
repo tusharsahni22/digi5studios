@@ -2,6 +2,7 @@ import { useEffect,useState } from 'react'
 import styled from 'styled-components'
 import { getMovieCast, getMovieDetails } from '../Services/services';
 import { useLocation } from 'react-router-dom';
+import Navbar from '../Navbar/navbax';
 
 
 const Moviedesc = () => {
@@ -223,19 +224,25 @@ const Moviedesc = () => {
     `;
     const Div = styled.div`
     display: grid;grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-
     gap: 20px;
     `;
-
-
-
-
-
-
-
+    const SideBar = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex ;
+    `;
+    const Movie = styled.div`
+    width: 100%;
+    height: 100vh;
+    padding: 0 20px;
+    overflow-y: scroll;
+    `;
 
   return (
     <Wrapper>
+        <SideBar>
+        <Navbar/>
+        <Movie>        
         <Carosel>
             <Img src={`https://image.tmdb.org/t/p/w342`+movieDetails.backdrop_path} />
         </Carosel>
@@ -291,6 +298,9 @@ const Moviedesc = () => {
             </Div>
             
         </Casting>}
+        </Movie>
+        </SideBar>
+
     </Wrapper>
   )
 }
