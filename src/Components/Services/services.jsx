@@ -27,3 +27,22 @@ export const getMovieCast = (id) => {
 export const getMostPopular = () => {
     return axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${apikey}&language=en-US&page=1`);
 }
+export const getTopRated = () => {
+    return axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apikey}&language=en-US&page=1`);
+}
+export const getMostRecent = () => {
+    return axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${apikey}&language=en-US&page=1`);
+}
+export const getRomanceMovies = () => {
+    return axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${apikey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=10749`);
+}
+export const getSearch = (searchInput) => {
+    return axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apikey}&language=en-US&query=${searchInput}&page=1&include_adult=false`);
+}
+export const getActionMovies = () => {
+    return axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${apikey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=28`);
+}
+export const getAdventureMovies = () => {
+    return axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${apikey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=12`);
+}
+

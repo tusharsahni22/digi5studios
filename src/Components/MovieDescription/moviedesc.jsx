@@ -116,12 +116,15 @@ const Moviedesc = () => {
     `;
     const Text = styled.div`
    background-color: #282B2F;
+   font-size: 12px;
    &:hover{
          background-color: #3C3F43;
    }
+
     `;
     const OverviewWords = styled.div`
     background-color: #282B2F;
+    font-size: 12px;
     padding-left: 10px;
     `;
     const BugdetandReview = styled.div`
