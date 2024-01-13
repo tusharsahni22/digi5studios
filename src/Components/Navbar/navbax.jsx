@@ -4,6 +4,8 @@ import { FaHome ,FaRegUserCircle} from "react-icons/fa";
 import { MdOutlineExplore } from "react-icons/md";
 import { FaRegBookmark } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Wrapper = styled.div`
 
 `;
@@ -48,11 +50,12 @@ function Navbar() {
   const navigate = useNavigate();
   return (
     <Wrapper>
-      <VerticalNav>
+      <ToastContainer  className = "Toastify__toast--success"/>
+      <VerticalNav  >
         <Homeicon onClick={()=>{navigate("/")}} />
-        <Exploreicon onClick={()=>{navigate("explorer")}}/>
-        <Bookmarkicon/>
-        <Profileicon/>
+        <Exploreicon onClick={()=>{navigate("/explorer")}}/>
+        <Bookmarkicon onClick={()=>{toast.success("please login to use this feature")}}/>
+        <Profileicon onClick={()=>{toast.success("Feature is in progress")}}/>
       </VerticalNav>
     </Wrapper>
   )

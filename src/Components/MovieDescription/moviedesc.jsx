@@ -2,6 +2,8 @@ import { useEffect,useState } from 'react'
 import styled from 'styled-components'
 import { getMovieCast, getMovieDetails } from '../Services/services';
 import { useLocation } from 'react-router-dom';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 import Navbar from '../Navbar/navbax';
 
 
@@ -15,11 +17,12 @@ const Moviedesc = () => {
     useEffect(() => {
         getMovieDetails(id).then((res) => {
             setMovieDetails(res.data);
+            console.log("movieDetails", res.data)
         });
         getMovieCast(id).then((res) => {
             setMovieCast(res.data.cast);
             console.log("movieCast", res.data.cast)
-            console.log("movieDetails", movieCast)
+            
         });
 
     }, []);
@@ -40,6 +43,7 @@ const Moviedesc = () => {
     `;
 
     const Carosel = styled.div`
+    position: relative;
     `;
     const Img = styled.img`
     width: 100%;
@@ -69,7 +73,7 @@ const Moviedesc = () => {
     align-items: center;
     /* padding: 0 40px; */
     background-color: #282B2F;
-    width: 450px;
+    width: 340px;
     height: 50px;
     border-radius: 10px;
     justify-content: space-between;
@@ -237,6 +241,20 @@ const Moviedesc = () => {
     padding: 0 20px;
     overflow-y: scroll;
     `;
+    const Genre = styled.div`
+    position: relative;
+    width: 100px;
+    background-color: #1976D2 !important;
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
+    top: -80px;
+    left: 20px;
+    color: white;
+    font-size: 20px;
+    background: transparent;
+    `;
+
 
   return (
     <Wrapper>
@@ -244,7 +262,13 @@ const Moviedesc = () => {
         <Navbar/>
         <Movie>        
         <Carosel>
+            <CircularProgressbar className='CircularProgressbar' value={movieDetails.vote_average}  maxValue={10} text={`${movieDetails.vote_average}`} />
             <Img src={`https://image.tmdb.org/t/p/w342`+movieDetails.backdrop_path} />
+            <div  style={{display:"flex",gap:"20px"}}>
+            {movieDetails.genres?.map((e)=>(
+            <Genre key={e.id}>{e.name}</Genre>
+            ))}
+             </div>
         </Carosel>
         <Menu>
             <MenuItems>

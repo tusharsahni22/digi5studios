@@ -24,3 +24,6 @@ export const getMovieDetails = (id) => {
 export const getMovieCast = (id) => {
     return axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apikey}&language=en-US`);
 }
+export const getMostPopular = () => {
+    return axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${apikey}&language=en-US&page=1`);
+}

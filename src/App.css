@@ -5,3 +5,22 @@
   font-family: 'Roboto', sans-serif;
   color: #fff;
 }
+
+.Toastify__toast--success  {
+  background: transparent !important;
+  color: #fff !important;
+  font-size: 12px !important;
+  background-color: transparent !important;
+}
+.Toastify__toast-body{
+  background-color: transparent !important;
+  background-color: transparent !important;
+}
+.CircularProgressbar {
+  position: absolute !important;
+  background-color: transparent !important;
+  width: 100px !important;
+  height: 100px !important;
+  top: 25px !important;
+  left: 40px !important;
+}
