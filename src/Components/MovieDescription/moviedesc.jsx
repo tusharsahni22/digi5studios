@@ -1,27 +1,37 @@
 import { useEffect,useState } from 'react'
 import styled from 'styled-components'
-import { getMovieCast, getMovieDetails } from '../Services/services';
+import { getMovieCast, getMovieDetails, getMovieTrailer } from '../Services/services';
 import { useLocation } from 'react-router-dom';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import Navbar from '../Navbar/navbax';
+import { MdPlayCircleOutline } from "react-icons/md";
+import { IoCloseCircleOutline } from "react-icons/io5";
+import ReactPlayer from 'react-player'
 
 
 const Moviedesc = () => {
     const location = useLocation()
     const  id  = location.state.movie_id
+    const [tralierButton, setTralierButton] = useState(false); // [] is the initial value
     const [movieDetails, setMovieDetails] = useState({});
     const [movieCast, setMovieCast] = useState([]);
     const [castOrOverview, setCastOrOverview] = useState("overview"); // [] is the initial value
+    const [movieTrailer, setMovieTrailer] = useState([]);
 
     useEffect(() => {
         getMovieDetails(id).then((res) => {
             setMovieDetails(res.data);
-            console.log("movieDetails", res.data)
+            // console.log("movieDetails", res.data)
         });
         getMovieCast(id).then((res) => {
             setMovieCast(res.data.cast);
-            console.log("movieCast", res.data.cast)
+            // console.log("movieCast", res.data.cast)
+            
+        });
+        getMovieTrailer(id).then((res) => {
+            setMovieTrailer(res.data.results);
+            console.log("movieTrailer", res.data.results[0].key)
             
         });
 
@@ -258,6 +268,36 @@ const Moviedesc = () => {
     background: transparent;
     `;
 
+    const PlayButton =styled(MdPlayCircleOutline)`
+    position: relative;
+    top: -80px;
+    right: 50px;
+    height: 50px;
+    width: 50px;
+    color: white;
+    font-size: 20px;
+    background: transparent;
+    &:hover{
+        cursor: pointer;
+    }
+    `;
+    const CloseButton =styled(IoCloseCircleOutline)`
+    position: relative;
+    top: -60px;
+    right: 20px;
+    height: 50px;
+    width: 50px;
+    color: white;
+    font-size: 20px;
+    background: transparent;
+    &:hover{
+        cursor: pointer;
+    }
+    `;
+
+
+
+
 
   return (
     <Wrapper>
@@ -265,13 +305,25 @@ const Moviedesc = () => {
         <Navbar/>
         <Movie>        
         <Carosel>
+            {tralierButton?<ReactPlayer width={"100%"} height={"500px"} url={`https://www.youtube.com/watch?v=${movieTrailer[0]?.key}`}/>:
+            <div>
             <CircularProgressbar className='CircularProgressbar' value={movieDetails.vote_average}  maxValue={10} text={`${movieDetails.vote_average}`} />
             <Img src={`https://image.tmdb.org/t/p/w342`+movieDetails.backdrop_path} />
-            <div  style={{display:"flex",gap:"20px"}}>
+            <div  style={{display:"flex",gap:"20px", justifyContent:"space-between"}}>
+                <div style={{display:"flex",gap:"20px"}}>
             {movieDetails.genres?.map((e)=>(
             <Genre key={e.id}>{e.name}</Genre>
             ))}
+            </div>
+            <PlayButton onClick={()=>{setTralierButton(true)}} />
+            {/* <TralierPlayButton >Trailer</TralierPlayButton> */}
              </div>
+             </div>}
+             {tralierButton?
+             <div style={{display:"flex",justifyContent:"space-between"}}>
+                <div></div>
+             <CloseButton onClick={()=>{setTralierButton(false)}} />
+             </div>:""}
         </Carosel>
         <Menu>
             <MenuItems>
@@ -289,7 +341,7 @@ const Moviedesc = () => {
             Original Title: {movieDetails.original_title} <br />
             Release Date: {movieDetails.release_date}
         </Description>
-
+       
         <BugetSection>
 
         <BugdetandReview>

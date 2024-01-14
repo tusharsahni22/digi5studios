@@ -229,7 +229,7 @@ useEffect(() => {
         <div  key={e.id} onClick={()=>{navigate("/movie-description",{state:{"movie_id":e.id}})}}>
         <Popularity>{e.vote_average}★</Popularity>
         <Frame>
-          <Img src={`https://image.tmdb.org/t/p/w342`+e.backdrop_path} />
+          <Img src={`https://image.tmdb.org/t/p/w342`+e.backdrop_path} alt='' />
         </Frame>
           <MovieTitle>{e.title}</MovieTitle>
         </div>))}
