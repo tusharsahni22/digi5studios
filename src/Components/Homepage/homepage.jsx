@@ -7,7 +7,6 @@ import { getPopularMovie, getTopRatedMovie, getTrendingMovies, getUpcomingMovie 
 
 
 const Wrapper = styled.div`
-margin-top: 50px;
 width: 100%;
 `;
 
@@ -20,6 +19,7 @@ const Section = styled.div`
 width: 100%;
 height: 100vh;
 padding: 0 20px;
+margin-top: 25px;
 overflow-y: scroll;
 `;
 

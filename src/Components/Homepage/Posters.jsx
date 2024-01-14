@@ -82,7 +82,7 @@ function Poster(props) {
         <Frame key={e.id} >
           <FavoriteIcon/>
         <BiCart>{e.vote_average}★</BiCart>
-        <Img loading='lazy' onClick={()=>{navigate("/movie-description",{state:{movie_id:e.id}})}} src={`https://image.tmdb.org/t/p/w342`+e.poster_path} />   
+        <Img loading='lazy' onClick={()=>{navigate("/movie-description",{state:{movie_id:e.id}})}} src={`https://image.tmdb.org/t/p/w342`+e.poster_path} onError={(e)=>{e.target.onerror = null; e.target.src="./coming soon.jpg"}} />   
         <Service>
         <div>                
         <Title>{e.title}</Title>

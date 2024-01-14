@@ -1,8 +1,25 @@
-# React + Vite
+digi5studios
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Getting Started
+Prerequisites
+This project uses Npm as package manager
 
-Currently, two official plugins are available:
+npm install -g npm
+🏃 Run Locally
+Clone the project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+  git clone https://github.com/tusharsahni22/digi5studios.git
+Go to the project directory
+
+  cd digi5studios
+Install dependencies
+
+  npm install
+
+Start the server
+
+  npm run dev
+
+Tech Stack
+Client
+Server

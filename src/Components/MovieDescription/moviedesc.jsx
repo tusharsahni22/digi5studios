@@ -308,7 +308,7 @@ const Moviedesc = () => {
             {tralierButton?<ReactPlayer width={"100%"} height={"500px"} url={`https://www.youtube.com/watch?v=${movieTrailer[0]?.key}`}/>:
             <div>
             <CircularProgressbar className='CircularProgressbar' value={movieDetails.vote_average}  maxValue={10} text={`${movieDetails.vote_average}`} />
-            <Img src={`https://image.tmdb.org/t/p/w342`+movieDetails.backdrop_path} />
+            <Img src={`https://image.tmdb.org/t/p/w342`+movieDetails.backdrop_path} onError={(e)=>{e.target.onerror = null; e.target.src="./coming soon.jpg"}} />
             <div  style={{display:"flex",gap:"20px", justifyContent:"space-between"}}>
                 <div style={{display:"flex",gap:"20px"}}>
             {movieDetails.genres?.map((e)=>(
@@ -366,7 +366,7 @@ const Moviedesc = () => {
             <Div >
             {movieCast.map((e)=>(
             <Frame key={e.id}>
-                <CastImg src={`https://image.tmdb.org/t/p/w342`+e.profile_path} />
+                <CastImg src={`https://image.tmdb.org/t/p/w342`+e.profile_path} onError={(e)=>{e.target.onerror = null; e.target.src="./coming soon.jpg"}} />
                 <Info>
                     <Name>{e.name}</Name>
                     <Character>{e.character}</Character>
