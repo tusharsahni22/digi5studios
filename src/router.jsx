@@ -3,6 +3,7 @@ import Homepage from "./Components/Homepage"
 import Explorer from "./Components/Explorer"
 import './App.css'
 import Moviedesc from './Components/MovieDescription/moviedesc'
+import HomePageTest from "./Components/Test/Homepage"
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path='/' element={<Homepage />} />
         <Route path='/explorer' element={<Explorer />} />
         <Route path='/movie-description' element={<Moviedesc/>} />
+        <Route path='/test' element={<HomePageTest/>} />
         {/* <Route path='/myprofile' element={<MyProfile/>} /> */}
       </Routes>
     </BrowserRouter>
